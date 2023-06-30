@@ -1,44 +1,71 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using SolvingProblems.Core;
 
-namespace SolvingProblems.Easy
+namespace SolvingProblems.Easy;
+
+public class Task258 : ISolvingProblemTaskWithResult<int, int>
 {
-	public class Task258
-	{
-		private const int V = 10;
+    private const int V = 10;
 
-		public int AddDigits(int num)
-		{
-			if(num < V)
-			{
-				return num;
-			}
+    private int Sum(int i, int j)
+    {
+        var res = i + j;
+        if (res >= V) return Sum(res / V, res % V);
 
-			var length = num.ToString().Length;
-			while (length != 1) 
-			{
-				var firstPow = (int)System.Math.Pow(V, length - 1);
-				var secondPow = (int)System.Math.Pow(V, length - 2);
+        return res;
+    }
 
-				int f = num / firstPow;
-				int s = (num - f * firstPow) / secondPow;
-				var sum = Sum(f, s);
+    public int Run(int input)
+    {
+        
+        if (input < V) return input;
 
-				num -= f * firstPow + s * secondPow;
-				num += sum * secondPow;
+        var length = input.ToString().Length;
+        while (length != 1)
+        {
+            var firstPow = (int)Math.Pow(V, length - 1);
+            var secondPow = (int)Math.Pow(V, length - 2);
 
-				length--;
-			}
-			return num;
-		}
+            var f = input / firstPow;
+            var s = (input - f * firstPow) / secondPow;
+            var sum = Sum(f, s);
 
-		private int Sum(int i, int j)
-		{
-			var res = i + j;
-			if (res >= V) {
-				return Sum(res / V, res % V);
-			}
+            input -= f * firstPow + s * secondPow;
+            input += sum * secondPow;
 
-			return res;
-		}
-	}
+            length--;
+        }
+
+        return input;
+    }
+
+    public IEnumerable<TestCasesDto<int, int>> TestCases()
+    {
+        yield return new TestCasesDto<int, int>
+        {
+            Input = 38,
+            Expected = 2
+        };
+        yield return new TestCasesDto<int, int>
+        {
+            Input = 111,
+            Expected = 3
+        };
+        yield return new TestCasesDto<int, int>
+        {
+            Input = 19,
+            Expected = 1
+        };
+        yield return new TestCasesDto<int, int>
+        {
+            Input = 199,
+            Expected = 1
+        };
+        yield return new TestCasesDto<int, int>
+        {
+            Input = 0,
+            Expected = 0
+        };
+    }
 }

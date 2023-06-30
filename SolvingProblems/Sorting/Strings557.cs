@@ -1,44 +1,58 @@
-﻿namespace SolvingProblems.Sorting
+﻿using System.Collections.Generic;
+using SolvingProblems.Core;
+
+namespace SolvingProblems.Sorting;
+
+public class Strings557 : ISolvingProblemTaskWithResult<string, string>
 {
-	namespace SolvingProblems.Sorting
-	{
-		public class Strings557
-		{
-			public string ReverseString(string s)
-			{
-				var charArray = s.ToCharArray();
-				var left = 0;
-				var right = 0;
-				while (right != s.Length)
-				{
-					var c = charArray[right];
-					if (c == ' ')
-					{
-						SubArray(charArray, left, right);
-						left = right + 1;
-					}
-				
-					right++;
-				}
-				SubArray(charArray, left, right);
+    public string Run(string input)
+    {
+        var charArray = input.ToCharArray();
+        var left = 0;
+        var right = 0;
+        while (right != input.Length)
+        {
+            var c = charArray[right];
+            if (c == ' ')
+            {
+                SubArray(charArray, left, right);
+                left = right + 1;
+            }
 
-				return new string(charArray);
-			}
+            right++;
+        }
 
-			private static void SubArray(char[] s, int left, int right)
-			{
-				var groups = (right - left) / 2;
+        SubArray(charArray, left, right);
 
-				for (var i = 0; i < groups; i++)
-				{
-					var start = left + i;
-					var end = right - 1 - i;
+        return new string(charArray);
+    }
 
-					var buf = s[start];
-					s[start] = s[end];
-					s[end] = buf;
-				}
-			}
-		}
-	}
+    public IEnumerable<TestCasesDto<string, string>> TestCases()
+    {
+        yield return new TestCasesDto<string, string>
+        {
+            Input = "Let's take LeetCode contest",
+            Expected = "s'teL ekat edoCteeL tsetnoc"
+        };
+        yield return new TestCasesDto<string, string>
+        {
+            Input = "God Ding",
+            Expected = "doG gniD"
+        };
+    }
+
+    private static void SubArray(char[] s, int left, int right)
+    {
+        var groups = (right - left) / 2;
+
+        for (var i = 0; i < groups; i++)
+        {
+            var start = left + i;
+            var end = right - 1 - i;
+
+            var buf = s[start];
+            s[start] = s[end];
+            s[end] = buf;
+        }
+    }
 }

@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
+using SolvingProblems.Core;
 
 namespace SolvingProblems.Strings
 {
-	public class StringParentheses20
+	public class StringParentheses20 : ISolvingProblemTaskWithResult<string, bool>
 	{
-		private static Dictionary<char, char> Replacement = new Dictionary<char, char>(3)
+		private static readonly Dictionary<char, char> Replacement = new(3)
 		{
 			{'}', '{'},
 			{')', '('},
 			{']', '['}
 		};
 
-		public bool IsValid(string s)
+		public bool Run(string input)
 		{
-			var braces = new Stack<char>(s.Length);
+			var braces = new Stack<char>(input.Length);
 
-			foreach (var ch in s)
+			foreach (var ch in input)
 				switch (ch)
 				{
 					case '{':
@@ -33,6 +34,30 @@ namespace SolvingProblems.Strings
 				}
 
 			return braces.Count == 0;
+		}
+
+		public IEnumerable<TestCasesDto<string, bool>> TestCases()
+		{
+			yield return new TestCasesDto<string, bool>
+			{
+				Input = "()",
+				Expected = true
+			};
+			yield return new TestCasesDto<string, bool>
+			{
+				Input = "()[]{}",
+				Expected = true
+			};
+			yield return new TestCasesDto<string, bool>
+			{
+				Input = "(]",
+				Expected = false
+			};
+			yield return new TestCasesDto<string, bool>
+			{
+				Input = "(",
+				Expected = false
+			};
 		}
 	}
 }
