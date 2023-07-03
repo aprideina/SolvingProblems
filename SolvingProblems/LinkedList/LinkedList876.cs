@@ -3,7 +3,7 @@ using SolvingProblems.Core;
 
 namespace SolvingProblems.LinkedList;
 
-public class LinkedList876 : ISolvingProblemTaskWithResult<LinkedList876.ListNode, LinkedList876.ListNode>
+public class LinkedList876 : ISolvingProblemTaskWithResult<ListNode, ListNode>
 {
     private void Recurse(ListNode node, out ListNode result, int step, out int mid)
     {
@@ -16,18 +16,6 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<LinkedList876.ListNod
         {
             result = node;
             mid = step / 2 + 1;
-        }
-    }
-
-    public class ListNode
-    {
-        public ListNode next;
-        public int val;
-
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
         }
     }
 
@@ -61,11 +49,11 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<LinkedList876.ListNod
     
     private TestCasesDto<ListNode, ListNode> TestCase3()
     {
-        var t5 = new LinkedList876.ListNode(5);
-        var t4 = new LinkedList876.ListNode(4, t5);
-        var t3 = new LinkedList876.ListNode(3, t4);
-        var t2 = new LinkedList876.ListNode(2, t3);
-        var t = new LinkedList876.ListNode(1, t2);
+        var t5 = new ListNode(5);
+        var t4 = new ListNode(4, t5);
+        var t3 = new ListNode(3, t4);
+        var t2 = new ListNode(2, t3);
+        var t = new ListNode(1, t2);
 
         return new TestCasesDto<ListNode, ListNode>
         {
@@ -76,11 +64,11 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<LinkedList876.ListNod
     
     private TestCasesDto<ListNode, ListNode> TestCase4()
     {
-        var t5 = new LinkedList876.ListNode(5, new LinkedList876.ListNode(6));
-        var t4 = new LinkedList876.ListNode(4, t5);
-        var t3 = new LinkedList876.ListNode(3, t4);
-        var t2 = new LinkedList876.ListNode(2, t3);
-        var t = new LinkedList876.ListNode(1, t2);
+        var t5 = new ListNode(5, new ListNode(6));
+        var t4 = new ListNode(4, t5);
+        var t3 = new ListNode(3, t4);
+        var t2 = new ListNode(2, t3);
+        var t = new ListNode(1, t2);
 
         return new TestCasesDto<ListNode, ListNode>
         {

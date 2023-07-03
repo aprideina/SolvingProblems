@@ -10,11 +10,11 @@ namespace SolvingProblems.Tests.LinkedList
 		[Test]
 		public void Test()
 		{
-			var t5 = new LinkedList19.ListNode(5);
-			var t4 = new LinkedList19.ListNode(4, t5);
-			var t3 = new LinkedList19.ListNode(3, t4);
-			var t2 = new LinkedList19.ListNode(2, t3);
-			var t = new LinkedList19.ListNode(1, t2);
+			var t5 = new ListNode(5);
+			var t4 = new ListNode(4, t5);
+			var t3 = new ListNode(3, t4);
+			var t2 = new ListNode(2, t3);
+			var t = new ListNode(1, t2);
 
 			var res = _sut.RemoveNthFromEnd(t, 2);
 			Assert.AreEqual(5, res.next.next.next.val);
@@ -23,8 +23,8 @@ namespace SolvingProblems.Tests.LinkedList
 		[Test]
 		public void Test_First()
 		{
-			var t2 = new LinkedList19.ListNode(2);
-			var t = new LinkedList19.ListNode(1, t2);
+			var t2 = new ListNode(2);
+			var t = new ListNode(1, t2);
 
 			var res = _sut.RemoveNthFromEnd(t, 2);
 			Assert.AreEqual(2, res.val);
@@ -33,7 +33,7 @@ namespace SolvingProblems.Tests.LinkedList
 		[Test]
 		public void Test_Single()
 		{
-			var t = new LinkedList19.ListNode(1);
+			var t = new ListNode(1);
 
 			var res = _sut.RemoveNthFromEnd(t, 1);
 			Assert.AreEqual(null, res);
@@ -42,8 +42,8 @@ namespace SolvingProblems.Tests.LinkedList
 		[Test]
 		public void Test_Two()
 		{
-			var t2 = new LinkedList19.ListNode(2);
-			var t = new LinkedList19.ListNode(1, t2);
+			var t2 = new ListNode(2);
+			var t = new ListNode(1, t2);
 
 			var res = _sut.RemoveNthFromEnd(t, 1);
 			Assert.AreEqual(null, res.next);
@@ -53,9 +53,9 @@ namespace SolvingProblems.Tests.LinkedList
 		[Test]
 		public void Test_Three()
 		{
-			var t3 = new LinkedList19.ListNode(3);
-			var t2 = new LinkedList19.ListNode(2, t3);
-			var t = new LinkedList19.ListNode(1, t2);
+			var t3 = new ListNode(3);
+			var t2 = new ListNode(2, t3);
+			var t = new ListNode(1, t2);
 
 			var res = _sut.RemoveNthFromEnd(t, 1);
 			Assert.AreEqual(null, res.next.next);
