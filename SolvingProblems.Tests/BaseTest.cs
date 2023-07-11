@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Linq;
+using NUnit.Framework;
 using SolvingProblems.Core;
 
 namespace SolvingProblems.Tests;
@@ -14,7 +16,20 @@ public abstract class BaseTest<T, TInput, TResult>
         foreach (var testCasesDto in task.TestCases())
         {
             var res = task.Run(testCasesDto.Input);
-            Assert.That(res, Is.EqualTo(testCasesDto.Expected));
+            Assert.That(res, Is.EqualTo(testCasesDto.Expected), message: GetMessage(testCasesDto.Input));
         }
+    }
+
+    private string GetMessage(TInput input)
+    {
+        switch (input)
+        {
+            case int[] arr:
+            {
+                return string.Join(',', arr.Select(i => i.ToString()));
+            }
+        }
+
+        return input.ToString();
     }
 }
