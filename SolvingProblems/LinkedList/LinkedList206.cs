@@ -25,16 +25,16 @@ public class LinkedList206 : ISolvingProblemTaskWithResult<ListNode, ListNode>
     {
         yield return TestCase3();
         
-        var expected = new ListNode(2, new ListNode(1));
-        var testCase = new ListNode(1, new ListNode(2));
+        var expected = new ListNode(2, 1);
+        var testCase = new ListNode(1, 2);
         yield return new TestCasesDto<ListNode, ListNode>
         {
             Input = testCase,
             Expected = expected
         };
 
-        var expected1 = new ListNode(3, new ListNode(2, new ListNode(1)));
-        var testCase1 = new ListNode(1, new ListNode(2, new ListNode(3)));
+        var expected1 = new ListNode(3, 2, 1);
+        var testCase1 = new ListNode(1, 2, 3);
         yield return new TestCasesDto<ListNode, ListNode>
         {
             Input = testCase1,
@@ -63,8 +63,8 @@ public class LinkedList206 : ISolvingProblemTaskWithResult<ListNode, ListNode>
 
     private static TestCasesDto<ListNode, ListNode> TestCase3()
     {
-        var expected2 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-        var testCase2 = new ListNode(5, new ListNode(4, new ListNode(3, new ListNode(2, new ListNode(1)))));
+        var expected2 = new ListNode(1, 2, 3, 4, 5);
+        var testCase2 = new ListNode(5, 4, 3, 2, 1);
         return new TestCasesDto<ListNode, ListNode>
         {
             Input = expected2,

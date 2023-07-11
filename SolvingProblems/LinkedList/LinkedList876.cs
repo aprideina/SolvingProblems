@@ -36,7 +36,7 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<ListNode, ListNode>
             Expected = testCase1
         };
         
-        var testCase2 = new ListNode(1, new ListNode(2));
+        var testCase2 = new ListNode(1, 2);
         yield return new TestCasesDto<ListNode, ListNode>
         {
             Input = testCase2,
@@ -49,11 +49,8 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<ListNode, ListNode>
     
     private TestCasesDto<ListNode, ListNode> TestCase3()
     {
-        var t5 = new ListNode(5);
-        var t4 = new ListNode(4, t5);
-        var t3 = new ListNode(3, t4);
-        var t2 = new ListNode(2, t3);
-        var t = new ListNode(1, t2);
+        var t3 = new ListNode(3, 4, 5);
+        var t = new ListNode(1, 2, 3, 4, 5);
 
         return new TestCasesDto<ListNode, ListNode>
         {
@@ -64,11 +61,8 @@ public class LinkedList876 : ISolvingProblemTaskWithResult<ListNode, ListNode>
     
     private TestCasesDto<ListNode, ListNode> TestCase4()
     {
-        var t5 = new ListNode(5, new ListNode(6));
-        var t4 = new ListNode(4, t5);
-        var t3 = new ListNode(3, t4);
-        var t2 = new ListNode(2, t3);
-        var t = new ListNode(1, t2);
+        var t4 = new ListNode(4, 5);
+        var t = new ListNode(1, 2, 3, 4, 5, 6);
 
         return new TestCasesDto<ListNode, ListNode>
         {

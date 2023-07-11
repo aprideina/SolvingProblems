@@ -7,6 +7,17 @@ public class ListNode : IEquatable<ListNode>
     public ListNode next;
     public int val;
 
+    public ListNode(params int[] values)
+    {
+        val = values[0];
+        var node = this;
+        for (var i = 1; i < values.Length; i++)
+        {
+            node.next = new ListNode(values[i]);
+            node = node.next;
+        }
+    }
+
     public ListNode(int val = 0, ListNode next = null)
     {
         this.val = val;

@@ -30,6 +30,6 @@ public abstract class BaseTest<T, TInput, TResult>
             }
         }
 
-        return input.ToString();
+        return input?.ToString();
     }
 }
